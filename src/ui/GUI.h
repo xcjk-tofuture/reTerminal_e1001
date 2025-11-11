@@ -24,10 +24,8 @@ extern lv_obj_t*  GUI_Panel__screen__panel;
 extern lv_obj_t*  GUI_Panel__screen__panel_1;
 extern lv_obj_t*  GUI_Panel__screen__panel_2;
 extern lv_obj_t*  GUI_Panel__screen__panel_3;
-extern lv_obj_t*  GUI_Panel__screen__panel_4;
-extern lv_obj_t*  GUI_Panel__screen__panel_5;
-extern lv_obj_t*  GUI_Panel__screen__panel_6;
-extern lv_obj_t*  GUI_Panel__screen__panel_7;
+LV_FONT_DECLARE( font_1 );
+extern lv_obj_t*  GUI_Label__screen__label;
 
 
 // Screen-specific function declarations
@@ -35,15 +33,11 @@ void GUI_initScreen__screen ();
 void GUI_initScreenTexts__screen ();
 void GUI_initScreenStyles__screen ();
 
-extern lv_style_t GUI_Style__class_HqRf7OBHYDfUJC__;
 extern lv_style_t GUI_Style__class_p58px5HsFqILGr__;
 extern lv_style_t GUI_Style__class_dZnQs4Qn2eDhQo__;
 extern lv_style_t GUI_Style__class_Jtij8jY2Dvc02m__;
 extern lv_style_t GUI_Style__class_umzFheTHCa6oGa__;
-extern lv_style_t GUI_Style__class_gELAzghP12nfVq__;
-extern lv_style_t GUI_Style__class_QiSrwtq8tXkA6v__;
-extern lv_style_t GUI_Style__class_AZhwT96gVSdTys__;
-extern lv_style_t GUI_Style__class_51ahHfbOis0YqI__;
+extern lv_style_t GUI_Style__class_feSRUvXmJNcOTw__;
 
 
 void GUI_load ();

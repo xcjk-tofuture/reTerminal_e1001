@@ -8,42 +8,30 @@ void GUI_initScreen__screen () {
      GUI_Panel__screen__panel = lv_obj_create( GUI_Screen__screen );
      lv_obj_remove_flag( GUI_Panel__screen__panel, LV_OBJ_FLAG_SCROLLABLE );
      lv_obj_set_align( GUI_Panel__screen__panel, LV_ALIGN_CENTER );
-     lv_obj_set_size( GUI_Panel__screen__panel, 200, 200 );
+     lv_obj_set_pos( GUI_Panel__screen__panel, -202, -120 );
+     lv_obj_set_size( GUI_Panel__screen__panel, 400, 240 );
 
      GUI_Panel__screen__panel_1 = lv_obj_create( GUI_Screen__screen );
      lv_obj_remove_flag( GUI_Panel__screen__panel_1, LV_OBJ_FLAG_SCROLLABLE );
      lv_obj_set_align( GUI_Panel__screen__panel_1, LV_ALIGN_CENTER );
-     lv_obj_set_size( GUI_Panel__screen__panel_1, 200, 200 );
+     lv_obj_set_pos( GUI_Panel__screen__panel_1, 208, -116 );
+     lv_obj_set_size( GUI_Panel__screen__panel_1, 421, 254 );
 
      GUI_Panel__screen__panel_2 = lv_obj_create( GUI_Screen__screen );
      lv_obj_remove_flag( GUI_Panel__screen__panel_2, LV_OBJ_FLAG_SCROLLABLE );
      lv_obj_set_align( GUI_Panel__screen__panel_2, LV_ALIGN_CENTER );
-     lv_obj_set_size( GUI_Panel__screen__panel_2, 200, 200 );
+     lv_obj_set_pos( GUI_Panel__screen__panel_2, 197, 120 );
+     lv_obj_set_size( GUI_Panel__screen__panel_2, 400, 240 );
 
      GUI_Panel__screen__panel_3 = lv_obj_create( GUI_Screen__screen );
      lv_obj_remove_flag( GUI_Panel__screen__panel_3, LV_OBJ_FLAG_SCROLLABLE );
      lv_obj_set_align( GUI_Panel__screen__panel_3, LV_ALIGN_CENTER );
-     lv_obj_set_size( GUI_Panel__screen__panel_3, 200, 200 );
+     lv_obj_set_pos( GUI_Panel__screen__panel_3, -202, 120 );
+     lv_obj_set_size( GUI_Panel__screen__panel_3, 400, 240 );
 
-     GUI_Panel__screen__panel_4 = lv_obj_create( GUI_Screen__screen );
-     lv_obj_remove_flag( GUI_Panel__screen__panel_4, LV_OBJ_FLAG_SCROLLABLE );
-     lv_obj_set_align( GUI_Panel__screen__panel_4, LV_ALIGN_CENTER );
-     lv_obj_set_size( GUI_Panel__screen__panel_4, 200, 200 );
-
-     GUI_Panel__screen__panel_5 = lv_obj_create( GUI_Screen__screen );
-     lv_obj_remove_flag( GUI_Panel__screen__panel_5, LV_OBJ_FLAG_SCROLLABLE );
-     lv_obj_set_align( GUI_Panel__screen__panel_5, LV_ALIGN_CENTER );
-     lv_obj_set_size( GUI_Panel__screen__panel_5, 200, 200 );
-
-     GUI_Panel__screen__panel_6 = lv_obj_create( GUI_Screen__screen );
-     lv_obj_remove_flag( GUI_Panel__screen__panel_6, LV_OBJ_FLAG_SCROLLABLE );
-     lv_obj_set_align( GUI_Panel__screen__panel_6, LV_ALIGN_CENTER );
-     lv_obj_set_size( GUI_Panel__screen__panel_6, 200, 200 );
-
-     GUI_Panel__screen__panel_7 = lv_obj_create( GUI_Screen__screen );
-     lv_obj_remove_flag( GUI_Panel__screen__panel_7, LV_OBJ_FLAG_SCROLLABLE );
-     lv_obj_set_align( GUI_Panel__screen__panel_7, LV_ALIGN_CENTER );
-     lv_obj_set_size( GUI_Panel__screen__panel_7, 200, 200 );
+     GUI_Label__screen__label = lv_label_create( GUI_Screen__screen );
+     lv_obj_set_align( GUI_Label__screen__label, LV_ALIGN_BOTTOM_RIGHT );
+     lv_obj_set_size( GUI_Label__screen__label, LV_SIZE_CONTENT, LV_SIZE_CONTENT );
 
 
     GUI_initScreenStyles__screen();
@@ -52,12 +40,11 @@ void GUI_initScreen__screen () {
 
 
 void GUI_initScreenTexts__screen () {
+     lv_label_set_text( GUI_Label__screen__label, "4L Test" );
 }
 
 
 void GUI_initScreenStyles__screen () {
-    lv_obj_add_style( GUI_Screen__screen, &GUI_Style__class_HqRf7OBHYDfUJC__, LV_PART_MAIN | LV_STATE_DEFAULT );
-
      lv_obj_add_style( GUI_Panel__screen__panel, &GUI_Style__class_p58px5HsFqILGr__, LV_PART_MAIN | LV_STATE_DEFAULT );
 
      lv_obj_add_style( GUI_Panel__screen__panel_1, &GUI_Style__class_dZnQs4Qn2eDhQo__, LV_PART_MAIN | LV_STATE_DEFAULT );
@@ -66,13 +53,7 @@ void GUI_initScreenStyles__screen () {
 
      lv_obj_add_style( GUI_Panel__screen__panel_3, &GUI_Style__class_umzFheTHCa6oGa__, LV_PART_MAIN | LV_STATE_DEFAULT );
 
-     lv_obj_add_style( GUI_Panel__screen__panel_4, &GUI_Style__class_gELAzghP12nfVq__, LV_PART_MAIN | LV_STATE_DEFAULT );
-
-     lv_obj_add_style( GUI_Panel__screen__panel_5, &GUI_Style__class_QiSrwtq8tXkA6v__, LV_PART_MAIN | LV_STATE_DEFAULT );
-
-     lv_obj_add_style( GUI_Panel__screen__panel_6, &GUI_Style__class_AZhwT96gVSdTys__, LV_PART_MAIN | LV_STATE_DEFAULT );
-
-     lv_obj_add_style( GUI_Panel__screen__panel_7, &GUI_Style__class_51ahHfbOis0YqI__, LV_PART_MAIN | LV_STATE_DEFAULT );
+     lv_obj_add_style( GUI_Label__screen__label, &GUI_Style__class_feSRUvXmJNcOTw__, LV_PART_MAIN | LV_STATE_DEFAULT );
 
 }
 

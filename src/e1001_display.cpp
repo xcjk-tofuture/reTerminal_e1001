@@ -29,22 +29,26 @@ static void e1001_disp_flush( lv_display_t *disp, const lv_area_t *area, uint8_t
     EPaper *epd = drv->epd;
     int32_t w = lv_area_get_width(area);
     int32_t h = lv_area_get_height(area);
-    w /= 8; // for 1-bit depth, byte boundary
-    uint8_t pixels8;
-
+    uint8_t pixels8_1;
+    uint8_t pixels8_2;
+    uint8_t pixels8_3;
+    uint8_t pixels8_4;
     // LV_LOG_INFO("flushing: %d,%d - %dx%d", area->x1, area->y1, w, h);
-
     for (int y = 0; y < h; y++) {
-        for (int x = 0; x < w; x++) {
-            pixels8 = (px_map + 8)[y * w + x];
-            for (int bit = 0; bit < 8; bit++) {
-                if (pixels8 & 0x80) {
-                    epd->drawPixel(area->x1 + x * 8 + bit, area->y1 + y, TFT_WHITE); // White
-                } else {
-                    epd->drawPixel(area->x1 + x * 8 + bit, area->y1 + y, TFT_BLACK); // Black
-                }
-                pixels8 <<= 1;
-            }
+        for (int x = 0; x < w; x +=4) {
+            pixels8_1 = (px_map)[y * w + x];
+            pixels8_2 = (px_map)[y * w + x + 1];
+            pixels8_3 = (px_map)[y * w + x + 2];
+            pixels8_4 = (px_map)[y * w + x + 3];
+            uint8_t pixel2_1 = (pixels8_1 <= 63) ? 0b00 : (pixels8_1 <= 127) ? 0b01 : (pixels8_1 <= 191) ? 0b10 : 0b11;
+            uint8_t pixel2_2 = (pixels8_2 <= 63) ? 0b00 : (pixels8_2 <= 127) ? 0b01 : (pixels8_2 <= 191) ? 0b10 : 0b11;
+            uint8_t pixel2_3 = (pixels8_3 <= 63) ? 0b00 : (pixels8_3 <= 127) ? 0b01 : (pixels8_3 <= 191) ? 0b10 : 0b11;
+            uint8_t pixel2_4 = (pixels8_4 <= 63) ? 0b00 : (pixels8_4 <= 127) ? 0b01 : (pixels8_4 <= 191) ? 0b10 : 0b11;
+            uint8_t packedByte = (pixel2_1 << 6) | (pixel2_2 << 4) | (pixel2_3 << 2) | pixel2_4;
+
+            epd->drawPixel(area->x1 + x , area->y1 + y, packedByte, 2);  //the last param is target_bpp
+
+            
         }
         // Serial.println(";");
     }
@@ -131,7 +135,7 @@ void e1001_display_init(e1001_driver_t *drv)
 
 void e1001_display_refresh(e1001_driver_t *drv)
 {
-    drv->epd->update();
+    drv->epd->updateGray();  //use gray update
     drv->flush_scheduled = false;
 }
 
