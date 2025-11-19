@@ -46,7 +46,7 @@ static void e1001_disp_flush( lv_display_t *disp, const lv_area_t *area, uint8_t
             uint8_t pixel2_4 = (pixels8_4 <= 63) ? 0b00 : (pixels8_4 <= 127) ? 0b01 : (pixels8_4 <= 191) ? 0b10 : 0b11;
             uint8_t packedByte = (pixel2_1 << 6) | (pixel2_2 << 4) | (pixel2_3 << 2) | pixel2_4;
 
-            epd->drawPixel(area->x1 + x , area->y1 + y, packedByte, 2);  //the last param is target_bpp
+            epd->drawBufferPixel(area->x1 + x , area->y1 + y, packedByte, 2);  //the last param is target_bpp
 
             
         }
